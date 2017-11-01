@@ -4,10 +4,12 @@ using System.IO;
 using WowPacketParser.Enums;
 using WowPacketParser.Enums.Version;
 using WowPacketParser.Misc;
+using WowPacketParser.Parsing;
 using WowPacketParser.Store;
 using WowPacketParser.Store.Objects;
+using SplineFlag = WowPacketParserModule.V2_4_3_8606.Enums.SplineFlag;
 
-namespace WowPacketParser.Parsing.Parsers
+namespace WowPacketParserModule.V2_4_3_8606.Parsers
 {
     public static class MovementHandler
     {
@@ -255,23 +257,23 @@ namespace WowPacketParser.Parsing.Parsers
 
             var flags = packet.ReadInt32E<SplineFlag>("Spline Flags");
 
-            if (flags.HasAnyFlag(SplineFlag.AnimationTier))
-            {
-                packet.ReadByteE<MovementAnimationState>("Animation State");
-                packet.ReadInt32("Async-time in ms");
-            }
+            //if (flags.HasAnyFlag(SplineFlag.AnimationTier))
+            //{
+            //    packet.ReadByteE<MovementAnimationState>("Animation State");
+            //    packet.ReadInt32("Async-time in ms");
+            //}
 
             packet.ReadInt32("Move Time");
 
-            if (flags.HasAnyFlag(SplineFlag.Trajectory))
-            {
-                packet.ReadSingle("Vertical Speed");
-                packet.ReadInt32("Async-time in ms");
-            }
+            //if (flags.HasAnyFlag(SplineFlag.Trajectory))
+            //{
+            //    packet.ReadSingle("Vertical Speed");
+            //    packet.ReadInt32("Async-time in ms");
+            //}
 
             var waypoints = packet.ReadInt32("Waypoints");
 
-            if (flags.HasAnyFlag(SplineFlag.Flying | SplineFlag.CatmullRom))
+            if (flags.HasAnyFlag(SplineFlag.Flying /*| SplineFlag.CatmullRom*/))
             {
                 for (var i = 0; i < waypoints; i++)
                     packet.ReadVector3("Waypoint", i);
