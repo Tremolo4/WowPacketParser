@@ -39,8 +39,13 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\RaidSummonFail.cs" />
     <Compile Include="Enums\SplineFlag.cs" />
+    <Compile Include="Enums\UpdateFields.cs" />
+    <Compile Include="Enums\UpdateFlag.cs" />
+    <Compile Include="Parsers\GroupHandler.cs" />
     <Compile Include="Parsers\MovementHandler.cs" />
+    <Compile Include="Parsers\UpdateHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
